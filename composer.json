@@ -1,0 +1,25 @@
+{
+    "name": "t_ishida/zaolik",
+    "description": "yet another DIContainer",
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "Takeshi Ishida",
+            "email": "ishida@aainc.co.jp"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : { 
+            "Zaolik\\" : "src/Zaolik"
+        }
+    },
+    "require-dev": {
+        "phake/phake": "2.*",
+        "PHPUnit/phpunit": "*",
+        "phpdocumentor/phpdocumentor" : "*",
+        "sebastian/phpcpd" : "*",
+        "phpmd/phpmd" : "*",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "require": {}
+}
