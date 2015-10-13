@@ -1,30 +1,30 @@
 <?php
 namespace Zaolik;
 
-class DIContainer 
+class DIContainer
 {
     private static $instance = null;
     private function __construct() {
     }
 
-    public static function getInstance() 
+    public static function getInstance()
     {
         if (self::$instance === null) {
             self::$instance = new DIContainer();
         }
         return self::$instance;
     }
-    
+
     private $flyWeights = array();
     private $new        = array();
 
-    public function clear() 
+    public function clear()
     {
         $this->flyWeights = array();
         $this->new        = array();
     }
 
-    public function setFlyWeight ($name, \Closure $closure) 
+    public function setFlyWeight ($name, \Closure $closure)
     {
         if (!isset($name) || !is_string($name)) {
             throw new \InvalidArgumentException('$name is invalid.');
@@ -35,7 +35,7 @@ class DIContainer
         }
         $this->flyWeights[$name]['constructor'] = $closure;
         return $this;
-    } 
+    }
 
     public function getFlyWeight ($name)
     {
@@ -51,9 +51,10 @@ class DIContainer
             $constructor = $this->flyWeights[$name]['constructor'];
             $this->flyWeights[$name]['instance'] = $constructor();
         }
+        return $this->flyWeights[$name]['instance'];
     }
 
-    public function setNew ($name, \Closure $closure) 
+    public function setNew ($name, \Closure $closure)
     {
         if (!isset($name) || !is_string($name)) {
             throw new \InvalidArgumentException('$name is invalid.');
@@ -66,11 +67,11 @@ class DIContainer
         return $this;
     }
 
-    public function getNewInstance (/* polymophick */) 
+    public function getNewInstance (/* polymophick */)
     {
         $numArgs = func_num_args();
         $args = func_get_args();
-        if ($numArgs === 0) { 
+        if ($numArgs === 0) {
             throw new \InvalidArgumentException('$name is invalid.');
         }
         $name = array_shift($args);
@@ -81,7 +82,7 @@ class DIContainer
             if (!is_array($args)) {
                 $args = array($args);
             }
-        } 
+        }
         if (!is_string($name)) {
             throw new \InvalidArgumentException('$name is invalid.');
         }
