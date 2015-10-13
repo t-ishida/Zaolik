@@ -37,7 +37,7 @@ class DIContainer
         return $this;
     } 
 
-    public function getFlyWieght ($name) 
+    public function getFlyWeight ($name)
     {
         if (!isset($name) || !is_string($name)) {
             throw new \InvalidArgumentException('$name is invalid.');

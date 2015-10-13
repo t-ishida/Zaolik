@@ -24,8 +24,8 @@ class DIContainerTest extends \PHPUnit_Framework_TestCase
     
     public function testFlyWeight() 
     {
-        $obj1 = $this->target->getFlyWieght('test');
-        $obj2 = $this->target->getFlyWieght('test');
+        $obj1 = $this->target->getFlyWeight('test');
+        $obj2 = $this->target->getFlyWeight('test');
         $this->assertSame($obj1, $obj2);
     }
 
@@ -114,7 +114,7 @@ class DIContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testEmptyConstructorGetFlyWeight () 
     {
-        $this->target->getFlyWieght(null);
+        $this->target->getFlyWeight(null);
     }
 
     /**
@@ -129,7 +129,7 @@ class DIContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidConstructorGetFlyWeight () 
     {
-        $this->target->getFlyWieght(new \stdClass());
+        $this->target->getFlyWeight(new \stdClass());
     }
 
     /**
@@ -144,6 +144,6 @@ class DIContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testNotExistsConstructorGetFlyWeight () 
     {
-        $this->target->getFlyWieght('not exists');
+        $this->target->getFlyWeight('not exists');
     }
 }
